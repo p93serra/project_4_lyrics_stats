@@ -54,7 +54,7 @@ def get_audio_features_tracks(uri_songs_list, sp):
     return df_audio_features
 
 def main():
-    path = "/Users/pauserrabergeron/Private/Ironhack/Course/credentials/"
+    path = "../../"
     f = open(path + "spotify_credentials.txt", "r")
     dict_credentials = json.loads(f.read()[:-1])
 
