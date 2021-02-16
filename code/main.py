@@ -81,7 +81,7 @@ def main():
     f.write("START: " + str(start) + "\n")
     f.close()
 
-    words_lyrics = ["Pending" for i in range(len(songs_df))]
+    words_lyrics = [["Pending"] for i in range(len(songs_df))]
 
     for i in range(len(songs_df)):
         f = open("../../" + file_name, "a")
