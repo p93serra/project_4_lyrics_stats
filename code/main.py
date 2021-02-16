@@ -91,7 +91,13 @@ def main():
         artist_name = songs_df.artist_1[i]
         if "-" in song_name:
             song_name = song_name.split(" - ")[0]
-        song = genius.search_song(song_name, artist_name)
+        try:
+            song = genius.search_song(song_name, artist_name)
+        except:
+            words_lyrics[i] = None
+            f.write("Connection Timeout" + "\n")
+            time.sleep(5)
+            continue
         if song == None:
             words_lyrics[i] = None
         else:
