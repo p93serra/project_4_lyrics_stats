@@ -17,14 +17,20 @@ def get_playlist_tracks(playlist_id, sp):
         print("Processed songs: " + str(i*100) + "/" + str(total_songs))
         i += 1
     print("Finished!")
-    name_songs = [i["track"]["name"] for i in items]
+    name_songs = []
     artists_songs = []
+    uri_songs = []
+    year_songs = []
+    popularity_songs = []
+    explicit_songs = []
     for i in items:
-        artists_songs.append([i["track"]["artists"][j]["name"] for j in range(len(i["track"]["artists"]))])
-    uri_songs = [i["track"]["uri"] for i in items]
-    year_songs = [i["track"]["album"]["release_date"][:4] for i in items]
-    popularity_songs = [i["track"]["popularity"] for i in items]
-    explicit_songs = [i["track"]["explicit"] for i in items]
+        if i != None:
+            name_songs.append(i["track"]["name"])
+            artists_songs.append([i["track"]["artists"][j]["name"] for j in range(len(i["track"]["artists"]))])
+            uri_songs.append(i["track"]["uri"])
+            year_songs.append(i["track"]["album"]["release_date"][:4])
+            popularity_songs.append(i["track"]["popularity"])
+            explicit_songs.append(i["track"]["explicit"])
     return name_songs, artists_songs, uri_songs, year_songs, popularity_songs, explicit_songs
 
 def get_audio_features_tracks(uri_songs_list, sp):
